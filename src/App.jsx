@@ -13,36 +13,37 @@ import React, { useState, useEffect, useRef } from 'react';
 // =================================================================
 const UNIT_POOLS = {
   '1단원': [
-    { emoji: '1️⃣', image: '/images/grade1.webp', question: 'What grade are you in?', answer: "I'm in the first grade." },
-    { emoji: '2️⃣', image: '/images/grade2.webp', question: 'What grade are you in?', answer: "I'm in the second grade." },
-    { emoji: '3️⃣', image: '/images/grade3.webp', question: 'What grade are you in?', answer: "I'm in the third grade." },
-    { emoji: '4️⃣', image: '/images/grade4.webp', question: 'What grade are you in?', answer: "I'm in the fourth grade." },
-    { emoji: '5️⃣', image: '/images/grade5.webp', question: 'What grade are you in?', answer: "I'm in the fifth grade." },
-    { emoji: '6️⃣', image: '/images/grade6.webp', question: 'What grade are you in?', answer: "I'm in the sixth grade." },
+    { emoji: '🇨🇦', image: '/images/u1-from-canada.webp', question: 'Where are you from?', answer: "I'm from Canada." },
+    { emoji: '🇨🇳', image: '/images/u1-from-china.webp', question: 'Where are you from?', answer: "I'm from China." },
+    { emoji: '🇫🇷', image: '/images/u1-from-france.webp', question: 'Where are you from?', answer: "I'm from France." },
+    { emoji: '🇮🇳', image: '/images/u1-from-india.webp', question: 'Where are you from?', answer: "I'm from India." },
+    { emoji: '🇰🇷', image: '/images/u1-from-korea.webp', question: 'Where are you from?', answer: "I'm from Korea." },
+    { emoji: '🇻🇳', image: '/images/u1-from-vietnam.webp', question: 'Where are you from?', answer: "I'm from Vietnam." },
+    { emoji: '🇺🇸', image: '/images/u1-from-us.webp', question: 'Where are you from?', answer: "I'm from the U.S." },
   ],
   '2단원': [
-    { emoji: '🌸', image: '/images/season-spring-flowers.webp', question: 'What season do you like?', answer: 'I like spring. I can see beautiful flowers.' },
-    { emoji: '🚌', image: '/images/season-spring-fieldtrip.webp', question: 'What season do you like?', answer: 'I like spring. I can go on a field trip.' },
-    { emoji: '🍉', image: '/images/season-summer-watermelon.webp', question: 'What season do you like?', answer: 'I like summer. I can eat watermelon.' },
-    { emoji: '🍁', image: '/images/season-fall-leaves.webp', question: 'What season do you like?', answer: 'I like fall. I can see colorful leaves.' },
-    { emoji: '🍲', image: '/images/season-fall-food.webp', question: 'What season do you like?', answer: 'I like fall. I can eat delicious food.' },
-    { emoji: '⛷️', image: '/images/season-winter-skiing.webp', question: 'What season do you like?', answer: 'I like winter. I can go skiing.' },
+    { emoji: '🍴', image: '/images/u2-forks.webp', question: 'What are these?', answer: "They're forks." },
+    { emoji: '🗺️', image: '/images/u2-maps.webp', question: 'What are those?', answer: "They're maps." },
+    { emoji: '✂️', image: '/images/u2-scissors.webp', question: 'What are these?', answer: "They're scissors." },
+    { emoji: '🥄', image: '/images/u2-spoons.webp', question: 'What are those?', answer: "They're spoons." },
+    { emoji: '📔', image: '/images/u2-albums.webp', question: 'What are these?', answer: "They're albums." },
+    { emoji: '🔘', image: '/images/u2-buttons.webp', question: 'What are those?', answer: "They're buttons." },
   ],
   '3단원': [
-    { emoji: '🎂', image: '/images/date-birthday.webp', question: 'When is your birthday?', answer: "It's on January 15th." },
-    { emoji: '🛒', image: '/images/date-school-market.webp', question: 'When is the school market?', answer: "It's on February 1st." },
-    { emoji: '🚌', image: '/images/date-field-trip.webp', question: 'When is the field trip?', answer: "It's on March 21st." },
-    { emoji: '🌍', image: '/images/date-earth-day.webp', question: 'When is Earth Day?', answer: "It's on April 22nd." },
-    { emoji: '🎪', image: '/images/date-club-festival.webp', question: 'When is the club festival?', answer: "It's on October 10th." },
-    { emoji: '🏅', image: '/images/date-sports-day.webp', question: 'When is Sports Day?', answer: "It's on December 2nd." },
+    { emoji: '🚲', image: '/images/u3-ride-bike.webp', question: 'Can I ride a bike?', answer: 'Yes, you can.' },
+    { emoji: '🐶', image: '/images/u3-bring-animals.webp', question: 'Can I bring animals?', answer: "No, you can't." },
+    { emoji: '📷', image: '/images/u3-take-pictures.webp', question: 'Can I take pictures?', answer: 'Yes, you can.' },
+    { emoji: '🍔', image: '/images/u3-eat-here.webp', question: 'Can I eat here?', answer: "No, you can't." },
+    { emoji: '🪑', image: '/images/u3-sit-here.webp', question: 'Can I sit here?', answer: 'Yes, you can.' },
+    { emoji: '🖊️', image: '/images/u3-borrow-pen.webp', question: 'Can I borrow a pen?', answer: 'Yes, you can.' },
   ],
   '4단원': [
-    { emoji: '🥋', image: '/images/feeling-happy-belt.webp', question: 'Why are you happy?', answer: 'Because I got a black belt.' },
-    { emoji: '🐶', image: '/images/feeling-sad-dog.webp', question: 'Why are you sad?', answer: 'Because my dog is sick.' },
-    { emoji: '🤖', image: '/images/feeling-angry-robot.webp', question: 'Why are you angry?', answer: 'Because my brother broke my robot.' },
-    { emoji: '🧹', image: '/images/feeling-tired-clean.webp', question: 'Why are you tired?', answer: 'Because I cleaned my house.' },
-    { emoji: '🌙', image: '/images/feeling-sleepy-late.webp', question: 'Why are you sleepy?', answer: 'Because I went to bed late.' },
-    { emoji: '📝', image: '/images/feeling-worried-test.webp', question: 'Why are you worried?', answer: 'Because I have a math test tomorrow.' },
+    { emoji: '✏️', image: '/images/u4-pencilcase-mine.webp', question: 'Whose pencil case is this?', answer: "It's mine." },
+    { emoji: '📱', image: '/images/u4-phone-toms.webp', question: 'Whose phone is this?', answer: "It's Tom's." },
+    { emoji: '🖊️', image: '/images/u4-pen-jacks.webp', question: 'Whose pen is that?', answer: "It's Jack's." },
+    { emoji: '📕', image: '/images/u4-textbook-erics.webp', question: 'Whose textbook is that?', answer: "It's Eric's." },
+    { emoji: '🍶', image: '/images/u4-bottle-mikes.webp', question: 'Whose bottle is that?', answer: "It's Mike's." },
+    { emoji: '🖍️', image: '/images/u4-pencilcase-sams.webp', question: 'Whose pencil case is that?', answer: "It's Sam's." },
   ],
 };
 
@@ -256,36 +257,29 @@ const WORD_MEANING = {
   i: '나', im: '나는 ~이다', "i'm": '나는 ~이다', my: '나의', me: '나를',
   you: '너', your: '너의', is: '~이다', are: '~이다(복수)', am: '~이다',
   the: '그 (정관사)', a: '하나의', an: '하나의', in: '~에/안에', on: '~에/위에',
-  to: '~로', and: '그리고', can: '~할 수 있다', do: '~하다', go: '가다',
-  see: '보다', eat: '먹다', got: 'get의 과거 (얻었다)', have: '가지고 있다',
-  its: '그것의', "it's": '그것은 ~이다',
+  to: '~로', and: '그리고', can: '~해도 된다/~할 수 있다', do: '~하다', go: '가다',
+  see: '보다', eat: '먹다', have: '가지고 있다',
+  its: '그것의', "it's": '그것은 ~이다', they: '그들/그것들', "they're": '그것들은 ~이다',
+  theyre: '그것들은 ~이다', this: '이것', that: '저것', here: '여기에', from: '~에서/~출신의',
+  yes: '응/네', no: '아니/아니요', "can't": '~할 수 없다/~하면 안 된다', cant: '~할 수 없다/~하면 안 된다',
   // 의문사
-  what: '무엇/어떤', when: '언제', why: '왜', how: '어떻게',
-  // 1단원
-  grade: '학년', first: '첫째 (1)', second: '둘째 (2)', third: '셋째 (3)',
-  fourth: '넷째 (4)', fifth: '다섯째 (5)', sixth: '여섯째 (6)',
-  // 2단원
-  season: '계절', like: '좋아하다',
-  spring: '봄', summer: '여름', fall: '가을', winter: '겨울',
-  beautiful: '아름다운', colorful: '알록달록한', delicious: '맛있는',
-  flowers: '꽃들', watermelon: '수박', leaves: '잎(낙엽)', food: '음식', skiing: '스키타기',
-  field: '들판/현장', trip: '여행', 'field trip': '현장학습',
-  // 3단원
-  birthday: '생일', school: '학교', market: '시장/마켓',
-  earth: '지구', day: '날', club: '동아리', festival: '축제', sports: '운동(스포츠)',
-  january: '1월', february: '2월', march: '3월', april: '4월',
-  october: '10월', december: '12월',
-  '15th': '15일', '1st': '1일', '21st': '21일', '22nd': '22일', '10th': '10일', '2nd': '2일',
-  // 4단원
-  because: '왜냐하면',
-  happy: '기쁜/행복한', sad: '슬픈', angry: '화난',
-  tired: '피곤한', sleepy: '졸린', worried: '걱정되는',
-  black: '검은', belt: '띠(벨트)',
-  dog: '강아지', sick: '아픈',
-  brother: '오빠/형/남동생', broke: 'break의 과거(부쉈다)', robot: '로봇',
-  cleaned: '청소했다', house: '집',
-  went: 'go의 과거(갔다)', bed: '침대', late: '늦은/늦게',
-  math: '수학', test: '시험', tomorrow: '내일',
+  what: '무엇/어떤', when: '언제', why: '왜', how: '어떻게', where: '어디에', whose: '누구의',
+  these: '이것들', those: '저것들',
+  // 1단원 (어디에서 왔니?)
+  canada: '캐나다', china: '중국', france: '프랑스', india: '인도',
+  korea: '한국', vietnam: '베트남', us: '미국', usa: '미국', america: '미국',
+  // 2단원 (이것들/저것들은 무엇이니?)
+  forks: '포크들', maps: '지도들', scissors: '가위', spoons: '숟가락들',
+  albums: '앨범들', buttons: '단추들',
+  // 3단원 (~해도 되니?)
+  ride: '타다', bike: '자전거', bring: '데려오다/가져오다', animals: '동물들',
+  take: '찍다/가지다', pictures: '사진들', sit: '앉다', borrow: '빌리다', pen: '펜',
+  // 4단원 (누구의 것이니?)
+  pencil: '연필', case: '케이스/상자', 'pencil case': '필통', phone: '전화기',
+  textbook: '교과서', bottle: '물병', mine: '내 것',
+  "tom's": '탐의 것', toms: '탐의 것', "jack's": '잭의 것', jacks: '잭의 것',
+  "eric's": '에릭의 것', erics: '에릭의 것', "mike's": '마이크의 것', mikes: '마이크의 것',
+  "sam's": '샘의 것', sams: '샘의 것',
 };
 
 const lookupMeaning = (raw) => {
@@ -997,7 +991,7 @@ export default function App() {
 
       <header className="w-full max-w-5xl flex flex-col md:flex-row justify-between items-center gap-4 mb-4 bg-white/95 backdrop-blur-sm p-4 rounded-2xl shadow-[0_4px_0_0_rgba(0,0,0,0.2)] z-10 border-2 border-emerald-900">
         <h1 className="text-2xl md:text-3xl font-black text-emerald-800 uppercase tracking-wider flex items-center gap-2">
-          🦁 Review Board Game
+          🦁 5학년 영어 표현 보드게임
         </h1>
 
         <div className="flex flex-col sm:flex-row gap-3 items-center">
